@@ -1,10 +1,12 @@
 
-export interface ResponseEntity<T> {
-	data: T
-}
+export class ResponseEntity<T> {
+	private data: T;
 
-export function of<T>(data: T): ResponseEntity<T> {
-	return {
-		data: data
-	};
+	private constructor(data: T) {
+		this.data = data;
+	}
+
+	static of<T>(data: T): ResponseEntity<T> {
+		return new ResponseEntity(data);
+	}
 }
