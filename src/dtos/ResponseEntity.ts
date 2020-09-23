@@ -1,12 +1,11 @@
-
 export class ResponseEntity<T> {
-	private data: T;
+	readonly data: T
 
 	private constructor(data: T) {
-		this.data = data;
+		this.data = data
 	}
 
 	static of<T>(data: T): ResponseEntity<T> {
-		return new ResponseEntity(data);
+		return new ResponseEntity(data)
 	}
 }
