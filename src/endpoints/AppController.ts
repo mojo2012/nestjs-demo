@@ -11,5 +11,6 @@ export default class AppController {
 		const data = await this.appService.getHello()
 
 		return ResponseEntity.of({ status: 200, headers: new Map([[ "X-Test", "test"] ]), body: data })
+		// return "test"
 	}
 }

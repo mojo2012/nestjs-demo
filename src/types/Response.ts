@@ -1,3 +1,3 @@
 export class Response {
-	get res(): any
+	// get res(): any
 }

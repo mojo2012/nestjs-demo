@@ -14,18 +14,28 @@ export class ResponseEntityInterceptor implements NestInterceptor {
 			)
 	}
 
-	private process(context: ExecutionContext, responseEntity: ResponseEntity<any>): any {
-		const http = context.switchToHttp()
-		const response = http.getResponse()
+	private process(context: ExecutionContext, responseEntity: any): any {
+		if (responseEntity instanceof ResponseEntity) {
+			const http = context.switchToHttp()
+			const response = http.getResponse()
 
-		response.status(responseEntity.status)
-
-		if (responseEntity.headers) {
-			for (const [key, value] of responseEntity.headers) {
-				response.res.setHeader(key, value)
+			if (responseEntity.status) {
+				response.status(responseEntity.status)
 			}
-		}
 
-		return responseEntity.body
+			if (responseEntity.headers) {
+				for (const [key, value] of responseEntity.headers) {
+					response.res.setHeader(key, value)
+				}
+			}
+
+			if (responseEntity.body) {
+				return responseEntity.body
+			}
+
+			return null
+		} else {
+			return responseEntity
+		}
 	}
 }
