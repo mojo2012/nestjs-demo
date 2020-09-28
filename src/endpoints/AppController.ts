@@ -10,6 +10,6 @@ export default class AppController {
 	async getHello(): Promise<ResponseEntity<string>> {
 		const data = await this.appService.getHello()
 
-		return ResponseEntity.of(data)
+		return ResponseEntity.of({ status: 200, headers: new Map([[ "X-Test", "test"] ]), body: data })
 	}
 }

@@ -4,12 +4,11 @@ import { tap } from "rxjs/operators"
 
 @Injectable()
 export class LoggingInterceptor implements NestInterceptor {
+	private loggers = new Map<string, Logger>()
 
 	intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
-		const logger = new Logger(context.getClass().name)
+		const logger = this.getLogger(context.getClass().name)
 		const handlerMethodName = context.getHandler().name
-
-		context.getClass().name
 
 		logger.log(`> ${handlerMethodName}`)
 
@@ -19,5 +18,16 @@ export class LoggingInterceptor implements NestInterceptor {
 			.pipe(
 				tap(() => logger.log(`< ${handlerMethodName} (${Date.now() - now}ms)`)),
 			)
+	}
+
+	private getLogger(typeName: string): Logger {
+		let logger = this.loggers.get(typeName)
+
+		if (!logger) {
+			logger = new Logger(typeName)
+			this.loggers.set(typeName, logger)
+		}
+
+		return logger
 	}
 }
