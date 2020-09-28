@@ -23,10 +23,8 @@ export class ResponseEntityInterceptor implements NestInterceptor {
 				response.status(responseEntity.status)
 			}
 
-			if (responseEntity.headers) {
-				for (const [key, value] of responseEntity.headers) {
-					response.res.setHeader(key, value)
-				}
+			for (const [key, value] of responseEntity.headers) {
+				response.res.setHeader(key, value)
 			}
 
 			if (responseEntity.body) {
