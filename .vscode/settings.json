@@ -1,2 +1,7 @@
 {
+	"typescript.format.semicolons": "remove",
+	"eslint.format.enable": true,
+	"typescript.format.enable": true,
+	"editor.formatOnPaste": true,
+	"editor.formatOnSave": false,
 }

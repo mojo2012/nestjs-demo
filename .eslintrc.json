@@ -73,8 +73,16 @@
 		"no-undefined": [
 			"error"
 		],
-		"no-use-before-define": [
-			"error"
+		"no-use-before-define": "error",
+		"max-statements-per-line": [
+			"warn",
+			{
+				"max": 1
+			}
+		],
+		"array-bracket-spacing": [
+			"warn",
+			"never"
 		]
 	}
 }
