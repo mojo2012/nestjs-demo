@@ -13,7 +13,13 @@ export class ResponseEntity<T> {
 	 * Creates a new ResponseEntity object that specifies how the response is rendered
 	 * @param args
 	 */
-	static of<T>(args: { status?: number, headers?: Map<string, string>, body?: T}): ResponseEntity<T> {
+	static of<T>(args: ResponseEntityArgs<T>): ResponseEntity<T> {
 		return new ResponseEntity(args.status, args.headers, args.body)
 	}
+}
+
+export interface ResponseEntityArgs<T>{
+	status?: number
+	headers?: Map<string, string>;
+	body ?: T;
 }
