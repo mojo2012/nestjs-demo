@@ -3,10 +3,10 @@ import { Observable } from "rxjs"
 import { tap } from "rxjs/operators"
 
 @Injectable()
-export class LoggingInterceptor implements NestInterceptor {
+export class LoggingInterceptor implements NestInterceptor<unknown, unknown> {
 	private loggers = new Map<string, Logger>()
 
-	intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
+	public intercept(context: ExecutionContext, next: CallHandler<unknown>): Observable<unknown> {
 		const logger = this.getLogger(context.getClass().name)
 		const handlerMethodName = context.getHandler().name
 

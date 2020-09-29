@@ -1,7 +1,7 @@
 export class ResponseEntity<T> {
-	readonly status: number = 200
-	readonly headers: Map<string, string>
-	readonly body?: T
+	public readonly status: number = 200
+	public readonly headers: Map<string, string>
+	public readonly body?: T
 
 	private constructor(status = 200, headers = new Map<string, string>(), body?: T) {
 		this.status = status
@@ -13,7 +13,7 @@ export class ResponseEntity<T> {
 	 * Creates a new ResponseEntity object that specifies how the response is rendered
 	 * @param args
 	 */
-	static of<T>(args: ResponseEntityArgs<T>): ResponseEntity<T> {
+	public static of<T>(args: ResponseEntityArgs<T>): ResponseEntity<T> {
 		return new ResponseEntity(args.status, args.headers, args.body)
 	}
 }
@@ -21,5 +21,5 @@ export class ResponseEntity<T> {
 export interface ResponseEntityArgs<T>{
 	status?: number
 	headers?: Map<string, string>;
-	body ?: T;
+	body?: T;
 }

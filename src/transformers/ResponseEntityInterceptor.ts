@@ -4,17 +4,17 @@ import { map } from "rxjs/operators"
 import { ResponseEntity } from "src/dtos/ResponseEntity"
 
 @Injectable()
-export class ResponseEntityInterceptor implements NestInterceptor {
+export class ResponseEntityInterceptor implements NestInterceptor<ResponseEntity<unknown>, unknown> {
 
-	intercept(context: ExecutionContext, next: CallHandler): Observable<ResponseEntity<any>> {
+	public intercept(context: ExecutionContext, next: CallHandler<ResponseEntity<unknown>>): Observable<ResponseEntity<unknown>> {
 		return next
 			.handle()
 			.pipe(
-				map((responseEntity) => this.process(context, responseEntity) )
+				map((responseEntity: ResponseEntity<unknown>) => this.process(context, responseEntity) )
 			)
 	}
 
-	private process(context: ExecutionContext, responseEntity: any): any {
+	private process(context: ExecutionContext, responseEntity: ResponseEntity<unknown>): any {
 		if (responseEntity instanceof ResponseEntity) {
 			const http = context.switchToHttp()
 			const response = http.getResponse()

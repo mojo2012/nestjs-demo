@@ -58,6 +58,22 @@
 			"always"
 		],
 		"max-classes-per-file": [
+			"error",
+			1
+		],
+		"getter-return": [
+			"error"
+		],
+		"@typescript-eslint/explicit-member-accessibility": [
+			"error"
+		],
+		"no-eq-null": [
+			"warn"
+		],
+		"no-undefined": [
+			"error"
+		],
+		"no-use-before-define": [
 			"error"
 		]
 	}
