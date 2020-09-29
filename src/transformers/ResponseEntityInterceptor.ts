@@ -1,7 +1,7 @@
+import { ResponseEntity } from "@app/dtos"
 import { CallHandler, ExecutionContext, Injectable, NestInterceptor } from "@nestjs/common"
 import { Observable } from "rxjs"
 import { map } from "rxjs/operators"
-import { ResponseEntity } from "src/dtos/ResponseEntity"
 
 @Injectable()
 export class ResponseEntityInterceptor implements NestInterceptor<ResponseEntity<unknown>, unknown> {
@@ -23,15 +23,11 @@ export class ResponseEntityInterceptor implements NestInterceptor<ResponseEntity
 				response.status(responseEntity.status)
 			}
 
-			for (const [key, value] of responseEntity.headers) {
-				response.res.setHeader(key, value)
+			for (const key in responseEntity.headers) {
+				response.raw.setHeader(key, responseEntity.headers[key])
 			}
 
-			if (responseEntity.body) {
-				return responseEntity.body
-			}
-
-			return null
+			return responseEntity.body
 		} else {
 			return responseEntity
 		}
