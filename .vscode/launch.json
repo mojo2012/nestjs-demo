@@ -11,7 +11,7 @@
 			"restart": true,
 			"runtimeExecutable": "${workspaceFolder}/node_modules/.bin/ts-node-dev",
 			"cwd": "${workspaceFolder}",
-			"outputCapture": "std",
+			"console": "integratedTerminal",
 			"internalConsoleOptions": "openOnSessionStart",
 			"args": [
 				"--inspect",
