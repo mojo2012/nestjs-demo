@@ -20,3 +20,5 @@ export interface IResponse {
 	 */
 	status(status: number): void,
 }
+
+export * from "./FreezableObject"
