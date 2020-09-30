@@ -5,24 +5,31 @@
 	"version": "0.2.0",
 	"configurations": [
 		{
-			"type": "node",
+			"name": "Debug",
+			"type": "pwa-node",
 			"request": "launch",
-			"name": "Debug Nest Framework",
+			"restart": true,
+			"runtimeExecutable": "${workspaceFolder}/node_modules/.bin/ts-node-dev",
+			"cwd": "${workspaceFolder}",
+			"outputCapture": "std",
+			"internalConsoleOptions": "openOnSessionStart",
 			"args": [
-				"${workspaceFolder}/src/main.ts"
+				"--inspect",
+				"--respawn",
+				"--no-notify",
+				"--require",
+				"tsconfig-paths/register",
+				"./src/main.ts"
 			],
-			"runtimeArgs": [
-				"--nolazy",
-				"-r",
-				"ts-node/register",
-				"-r",
-				"tsconfig-paths/register"
+			"skipFiles": [
+				"<node_internals>/**"
 			],
 			"sourceMaps": true,
-			"envFile": "${workspaceFolder}/.env",
-			"cwd": "${workspaceRoot}",
-			"console": "integratedTerminal",
-			"protocol": "inspector"
+			"smartStep": true,
+			"resolveSourceMapLocations": [
+				"${workspaceFolder}/**",
+				"!**/node_modules/**"
+			]
 		}
 	]
 }
