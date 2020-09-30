@@ -1,4 +1,5 @@
 import { ResponseEntity } from "@app/dtos"
+import { IResponse } from "@app/types"
 import { CallHandler, ExecutionContext, Injectable, NestInterceptor } from "@nestjs/common"
 import { Observable } from "rxjs"
 import { map } from "rxjs/operators"
@@ -17,7 +18,7 @@ export class ResponseEntityInterceptor implements NestInterceptor<ResponseEntity
 	private process(context: ExecutionContext, responseEntity: ResponseEntity<unknown>): any {
 		if (responseEntity instanceof ResponseEntity) {
 			const http = context.switchToHttp()
-			const response = http.getResponse()
+			const response: IResponse = http.getResponse()
 
 			if (responseEntity.status) {
 				response.status(responseEntity.status)
