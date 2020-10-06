@@ -4,14 +4,14 @@ import { Controller, Get } from "@nestjs/common"
 
 @Controller()
 export class AppController {
-	public constructor(private readonly appService: AppService) { }
+	public constructor(private readonly appService: AppService) {}
 
 	@Get()
 	public async getHome(): Promise<ResponseEntity<string>> {
 		const data = await this.appService.getHello()
 
 		return ResponseEntity.of({
-			headers: { "X-Test": "test"},
+			headers: { "X-Test": "test" },
 			body: data
 		})
 	}

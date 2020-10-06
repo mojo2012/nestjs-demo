@@ -5,15 +5,19 @@
 	},
 	"extends": [
 		"eslint:recommended",
-		"plugin:@typescript-eslint/recommended"
+		"plugin:@typescript-eslint/recommended",
+		"plugin:prettier/recommended",
+		"prettier",
+		"prettier/@typescript-eslint"
 	],
 	"parser": "@typescript-eslint/parser",
 	"parserOptions": {
-		"ecmaVersion": 12,
+		"ecmaVersion": 2020,
 		"sourceType": "module"
 	},
 	"plugins": [
-		"@typescript-eslint"
+		"@typescript-eslint",
+		"prettier"
 	],
 	"rules": {
 		"indent": [
@@ -83,6 +87,22 @@
 		"array-bracket-spacing": [
 			"warn",
 			"never"
+		],
+		"newline-per-chained-call": "warn",
+		"prettier/prettier": [
+			"warn",
+			{
+				"tabWidth": 1,
+				"useTabs": true,
+				"usePrettierrc": false,
+				"singleQuote": false,
+				"parser": "typescript",
+				"semi": false,
+				"trailingComma": "none",
+				"bracketSpacing": true,
+				"arrowParens": "always",
+				"printWidth": 160
+			}
 		]
 	}
 }

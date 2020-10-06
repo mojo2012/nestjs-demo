@@ -1,7 +1,7 @@
-export interface ResponseEntityArgs<T>{
+export interface ResponseEntityArgs<T> {
 	status?: number
-	headers?: Record<string, string>;
-	body?: T;
+	headers?: Record<string, string>
+	body?: T
 }
 
 export class ResponseEntity<T> {

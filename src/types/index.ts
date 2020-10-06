@@ -12,13 +12,19 @@ export interface IResponse {
 	/**
 	 * The raw HTTP response stream object
 	 */
-	raw: IRawResponse,
+	raw?: IRawResponse
 
 	/**
 	 * Sets the HTTP status code
 	 * @param status the HTTP status code
 	 */
-	status(status: number): void,
+	status?(status: number): void
+}
+
+export class HttpResponse implements IResponse {
+	public setHeader(header: string, value: string): void {
+		//
+	}
 }
 
 export * from "./FreezableObject"

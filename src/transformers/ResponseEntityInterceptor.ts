@@ -1,24 +1,20 @@
 import { ResponseEntity } from "@app/dtos"
-import { IResponse } from "@app/types"
 import { CallHandler, ExecutionContext, Injectable, NestInterceptor } from "@nestjs/common"
 import { Observable } from "rxjs"
 import { map } from "rxjs/operators"
 
 @Injectable()
 export class ResponseEntityInterceptor implements NestInterceptor<ResponseEntity<unknown>, unknown> {
-
-	public intercept(context: ExecutionContext, next: CallHandler<ResponseEntity<unknown>>): Observable<ResponseEntity<unknown>> {
-		return next
-			.handle()
-			.pipe(
-				map((responseEntity: ResponseEntity<unknown>) => this.process(context, responseEntity) )
-			)
+	public intercept(context: ExecutionContext, next: CallHandler<ResponseEntity<unknown>>): Observable<unknown> {
+		return next //
+			.handle() //
+			.pipe(map((responseEntity: ResponseEntity<unknown>) => this.process(context, responseEntity)))
 	}
 
-	private process(context: ExecutionContext, responseEntity: ResponseEntity<unknown>): any {
+	private process(context: ExecutionContext, responseEntity: ResponseEntity<unknown>): unknown {
 		if (responseEntity instanceof ResponseEntity) {
 			const http = context.switchToHttp()
-			const response: IResponse = http.getResponse()
+			const response: any = http.getResponse()
 
 			if (responseEntity.status) {
 				response.status(responseEntity.status)

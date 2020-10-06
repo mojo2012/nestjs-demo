@@ -13,11 +13,9 @@ export class LoggingInterceptor implements NestInterceptor<unknown, unknown> {
 		logger.log(`> ${handlerMethodName}`)
 
 		const now = Date.now()
-		return next
-			.handle()
-			.pipe(
-				tap(() => logger.log(`< ${handlerMethodName} (${Date.now() - now}ms)`)),
-			)
+		return next //
+			.handle() //
+			.pipe(tap(() => logger.log(`< ${handlerMethodName} (${Date.now() - now}ms)`)))
 	}
 
 	private getLogger(typeName: string): Logger {
