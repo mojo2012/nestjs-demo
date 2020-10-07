@@ -8,22 +8,45 @@ export interface IRawResponse {
 	setHeader(key: string, value: string): void
 }
 
-export interface IResponse {
+/**
+ * Wraps Express and Fastify response handling
+ */
+export class HttpResponse {
 	/**
 	 * The raw HTTP response stream object
 	 */
-	raw?: IRawResponse
+	private rawResponse: any
+
+	private constructor(rawResponse: any) {
+		this.rawResponse = rawResponse
+	}
+
+	public setHeader(header: string, value: string): void {
+		if (this.rawResponse.setHeader) {
+			// express
+			this.rawResponse.setHeader(header, value)
+		} else if (this.rawResponse.raw && this.rawResponse.raw.setHeader) {
+			// fastify
+			this.rawResponse.raw.setHeader(header, value)
+		} else {
+			throw new Error("Cannot set header: unknown response implementation")
+		}
+	}
 
 	/**
 	 * Sets the HTTP status code
 	 * @param status the HTTP status code
 	 */
-	status?(status: number): void
-}
+	public setStatus(status: number): void {
+		if (this.rawResponse.status) {
+			this.rawResponse.status(status)
+		} else {
+			throw new Error("Cannot set status: unknown response implementation")
+		}
+	}
 
-export class HttpResponse implements IResponse {
-	public setHeader(header: string, value: string): void {
-		//
+	public static of(rawResponse: any): HttpResponse {
+		return new HttpResponse(rawResponse)
 	}
 }
 

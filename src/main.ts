@@ -1,12 +1,13 @@
 import { Logger } from "@nestjs/common"
-import { NestApplication, NestFactory } from "@nestjs/core"
-import { AppModule } from "./modules/AppModule"
+import { NestFactory } from "@nestjs/core"
+import { FastifyAdapter, NestFastifyApplication } from "@nestjs/platform-fastify"
+import { AppModule } from "./modules"
 import { LoggingInterceptor } from "./transformers/LoggingInterceptor"
 import { ResponseEntityInterceptor } from "./transformers/ResponseEntityInterceptor"
 
 async function bootstrap() {
 	const port = 3000
-	const app = await NestFactory.create<NestApplication>(AppModule)
+	const app = await NestFactory.create<NestFastifyApplication>(AppModule, new FastifyAdapter())
 	app.useGlobalInterceptors(new LoggingInterceptor())
 	app.useGlobalInterceptors(new ResponseEntityInterceptor())
 

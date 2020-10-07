@@ -1,4 +1,5 @@
 import { ResponseEntity } from "@app/dtos"
+import { HttpResponse } from "@app/types"
 import { CallHandler, ExecutionContext, Injectable, NestInterceptor } from "@nestjs/common"
 import { Observable } from "rxjs"
 import { map } from "rxjs/operators"
@@ -14,14 +15,14 @@ export class ResponseEntityInterceptor implements NestInterceptor<ResponseEntity
 	private process(context: ExecutionContext, responseEntity: ResponseEntity<unknown>): unknown {
 		if (responseEntity instanceof ResponseEntity) {
 			const http = context.switchToHttp()
-			const response: any = http.getResponse()
+			const response: HttpResponse = HttpResponse.of(http.getResponse())
 
 			if (responseEntity.status) {
-				response.status(responseEntity.status)
+				response.setStatus(responseEntity.status)
 			}
 
 			for (const key in responseEntity.headers) {
-				response.raw.setHeader(key, responseEntity.headers[key])
+				response.setHeader(key, responseEntity.headers[key])
 			}
 
 			return responseEntity.body
