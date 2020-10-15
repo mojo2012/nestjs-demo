@@ -19,7 +19,9 @@
 				"--no-notify",
 				"--require",
 				"tsconfig-paths/register",
-				"./src/main.ts"
+				"./src/main.ts",
+				// app arguments
+				"--init"
 			],
 			"skipFiles": [
 				"<node_internals>/**"
