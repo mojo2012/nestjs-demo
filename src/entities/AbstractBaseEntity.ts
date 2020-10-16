@@ -5,6 +5,9 @@ export abstract class AbstractBaseEntity extends BaseEntity<AbstractBaseEntity, 
 	@PrimaryKey({ columnType: "uuid" })
 	public id = v4()
 
+	@Property({ version: true, columnType: "integer" })
+	public version = 0
+
 	@Property({ columnType: "timestamp" })
 	public createdAt = new Date()
 

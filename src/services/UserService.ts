@@ -13,6 +13,7 @@ export class UserService {
 	}
 
 	public async createUser(user: User): Promise<User> {
+		// this.userRepository.entityManager.fork(true, true)
 		const newUser = this.userRepository.create(user)
 
 		await this.userRepository.persistAndFlush(newUser)
