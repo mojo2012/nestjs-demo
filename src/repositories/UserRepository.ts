@@ -1,8 +1,9 @@
 import { User } from "@app/entities/User"
-import { Injectable } from "@nestjs/common"
-import { EntityRepository } from "mikro-orm"
+import { EntityManager, EntityRepository, Repository } from "mikro-orm"
 
-@Injectable()
+@Repository(User)
 export class UserRepository extends EntityRepository<User> {
-	//
+	public constructor(private readonly entityManager: EntityManager) {
+		super(entityManager, User)
+	}
 }

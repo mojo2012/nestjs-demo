@@ -5,7 +5,7 @@
 		}
 	],
 	"settings": {
-		"typescript.format.enable": true,
+		"typescript.format.enable": false,
 		"javascript.format.semicolons": "remove",
 		"typescript.format.semicolons": "remove",
 		"[typescript]": {
@@ -15,6 +15,13 @@
 			},
 			"editor.defaultFormatter": "dbaeumer.vscode-eslint"
 		},
-		"eslint.format.enable": true
+		"eslint.format.enable": true,
+		"typescript.implementationsCodeLens.enabled": true,
+		"javascript.implicitProjectConfig.experimentalDecorators": true,
+		"javascript.implicitProjectConfig.checkJs": true,
+		"javascript.referencesCodeLens.enabled": true,
+		"javascript.referencesCodeLens.showOnAllFunctions": true,
+		"javascript.suggest.completeFunctionCalls": true,
+		"typescript.suggest.completeFunctionCalls": true
 	}
 }

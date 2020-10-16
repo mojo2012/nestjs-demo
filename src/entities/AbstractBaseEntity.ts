@@ -10,4 +10,8 @@ export abstract class AbstractBaseEntity extends BaseEntity<AbstractBaseEntity, 
 
 	@Property({ columnType: "timestamp", onUpdate: () => new Date() })
 	public updatedAt = new Date()
+
+	public constructor() {
+		super()
+	}
 }
