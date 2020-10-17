@@ -11,7 +11,9 @@
 			"restart": true,
 			"runtimeExecutable": "${workspaceFolder}/node_modules/.bin/ts-node-dev",
 			"cwd": "${workspaceFolder}",
-			"console": "integratedTerminal",
+			// "console": "integratedTerminal",
+			"console": "internalConsole",
+			"outputCapture": "std",
 			"internalConsoleOptions": "openOnSessionStart",
 			"args": [
 				"--inspect",
@@ -19,6 +21,10 @@
 				"--no-notify",
 				"--require",
 				"tsconfig-paths/register",
+				"--transpile-only",
+				// "--debug",
+				"--quiet",
+				"--clear",
 				"./src/main.ts",
 				// app arguments
 				"--init"

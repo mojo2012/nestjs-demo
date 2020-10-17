@@ -22,6 +22,10 @@
 		"javascript.referencesCodeLens.enabled": true,
 		"javascript.referencesCodeLens.showOnAllFunctions": true,
 		"javascript.suggest.completeFunctionCalls": true,
-		"typescript.suggest.completeFunctionCalls": true
+		"typescript.suggest.completeFunctionCalls": true,
+		"editor.codeActionsOnSave": {
+			"source.fixAll": true,
+			"source.organizeImports": true,
+		}
 	}
 }

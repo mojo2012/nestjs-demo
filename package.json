@@ -29,7 +29,7 @@
     "@nestjs/platform-express": "^7.0.0",
     "@nestjs/platform-fastify": "^7.4.4",
     "@types/uuid": "^8.3.0",
-    "mikro-orm": "^4.1.1",
+    "@types/umzug": "^2.3.0",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^6.5.4"

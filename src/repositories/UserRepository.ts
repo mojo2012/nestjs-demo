@@ -1,7 +1,7 @@
 import { User } from "@app/entities/User"
 import { AbstractEntityRepository } from "@app/repositories/AbstractEntityRepository"
+import { EntityManager, Repository } from "@mikro-orm/core"
 import { Injectable } from "@nestjs/common"
-import { EntityManager, Repository } from "mikro-orm"
 
 @Repository(User)
 @Injectable()

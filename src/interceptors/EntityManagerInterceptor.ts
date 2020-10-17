@@ -1,5 +1,5 @@
+import { MikroORM } from "@mikro-orm/core"
 import { CallHandler, ExecutionContext, Injectable, NestInterceptor } from "@nestjs/common"
-import { MikroORM } from "mikro-orm"
 import { Observable } from "rxjs"
 
 @Injectable()

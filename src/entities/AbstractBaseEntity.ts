@@ -1,4 +1,4 @@
-import { BaseEntity, PrimaryKey, Property } from "mikro-orm"
+import { BaseEntity, PrimaryKey, Property } from "@mikro-orm/core"
 import { v4 } from "uuid"
 
 export abstract class AbstractBaseEntity extends BaseEntity<AbstractBaseEntity, "id"> {

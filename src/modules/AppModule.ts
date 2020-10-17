@@ -4,10 +4,10 @@ import { User } from "@app/entities/User"
 import { EntityManagerInterceptor, LoggingInterceptor, ResponseEntityInterceptor } from "@app/interceptors"
 import { UserRepository } from "@app/repositories/UserRepository"
 import { UserService } from "@app/services"
+import { MikroORM } from "@mikro-orm/core"
 import { MikroOrmModule } from "@mikro-orm/nestjs"
 import { Module } from "@nestjs/common"
 import { APP_INTERCEPTOR } from "@nestjs/core"
-import { MikroORM } from "mikro-orm"
 
 @Module({
 	imports: [

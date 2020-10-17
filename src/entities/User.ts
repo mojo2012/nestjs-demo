@@ -1,5 +1,5 @@
 import { AbstractBaseEntity } from "@app/entities/AbstractBaseEntity"
-import { Entity, Property } from "mikro-orm"
+import { Entity, Property } from "@mikro-orm/core"
 
 @Entity()
 export class User extends AbstractBaseEntity {

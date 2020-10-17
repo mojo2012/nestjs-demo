@@ -1,8 +1,8 @@
 import { ResponseEntity } from "@app/dtos"
 import { User } from "@app/entities/User"
 import { UserService } from "@app/services"
+import { NotNullConstraintViolationException } from "@mikro-orm/core"
 import { Body, Controller, Get, HttpStatus, Post } from "@nestjs/common"
-import { NotNullConstraintViolationException } from "mikro-orm"
 
 @Controller()
 export class AppController {
