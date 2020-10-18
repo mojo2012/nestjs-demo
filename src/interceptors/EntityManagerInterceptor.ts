@@ -9,9 +9,10 @@ import { Observable } from "rxjs"
 export class EntityManagerInterceptor implements NestInterceptor<unknown, unknown> {
 	public constructor(private readonly orm: MikroORM) {}
 
-	public intercept(context: ExecutionContext, next: CallHandler<unknown>): Observable<unknown> {
+	public async intercept(context: ExecutionContext, next: CallHandler<unknown>): Promise<Observable<unknown>> {
 		// reset ORM context
-		this.orm.em.fork(true, true)
+		await this.orm.em.flush()
+		this.orm.em.clear()
 
 		return next //
 			.handle()
