@@ -1,13 +1,14 @@
 import { AppController } from "@app/endpoints"
 import { AbstractBaseEntity } from "@app/entities/AbstractBaseEntity"
 import { User } from "@app/entities/User"
-import { EntityManagerInterceptor, LoggingInterceptor, ResponseEntityInterceptor } from "@app/interceptors"
+import { ExceptionFilter } from "@app/filters/ExceptionFilter"
+import { LoggingInterceptor, ResponseEntityInterceptor } from "@app/interceptors"
 import { UserRepository } from "@app/repositories/UserRepository"
 import { UserService } from "@app/services"
 import { MikroORM } from "@mikro-orm/core"
 import { MikroOrmModule } from "@mikro-orm/nestjs"
 import { Module } from "@nestjs/common"
-import { APP_INTERCEPTOR } from "@nestjs/core"
+import { APP_FILTER, APP_INTERCEPTOR } from "@nestjs/core"
 
 @Module({
 	imports: [
@@ -31,13 +32,17 @@ import { APP_INTERCEPTOR } from "@nestjs/core"
 			provide: APP_INTERCEPTOR,
 			useClass: LoggingInterceptor
 		},
-		{
-			provide: APP_INTERCEPTOR,
-			useClass: EntityManagerInterceptor
-		},
+		// {
+		// 	provide: APP_INTERCEPTOR,
+		// 	useClass: EntityManagerInterceptor
+		// },
 		{
 			provide: APP_INTERCEPTOR,
 			useClass: ResponseEntityInterceptor
+		},
+		{
+			provide: APP_FILTER,
+			useClass: ExceptionFilter
 		}
 	]
 })

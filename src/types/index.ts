@@ -33,6 +33,16 @@ export class HttpResponse {
 		}
 	}
 
+	public setBody(body: unknown): void {
+		if (this.rawResponse.raw.json) {
+			// express
+			this.rawResponse.raw.json(body)
+		} else if (this.rawResponse.send) {
+			// fastify
+			this.rawResponse.send(body)
+		}
+	}
+
 	/**
 	 * Sets the HTTP status code
 	 * @param status the HTTP status code

@@ -9,10 +9,13 @@ async function bootstrap() {
 	// app.useGlobalInterceptors(new LoggingInterceptor())
 	// app.useGlobalInterceptors(new ResponseEntityInterceptor())
 	// app.useGlobalInterceptors(new EntityManagerInterceptor())
+	// app.useGlobalFilters(new ExceptionFilter())
 
 	await app.listen(port)
 
-	new Logger("Bootstrap").log(`Listening on port ${port}`)
+	const logger = new Logger("Bootstrap")
+
+	logger.log(`Listening on port ${port}`)
 }
 
 bootstrap()

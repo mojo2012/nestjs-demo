@@ -16,6 +16,7 @@
 			"outputCapture": "std",
 			"internalConsoleOptions": "openOnSessionStart",
 			"args": [
+				"--trace-warnings",
 				"--inspect",
 				"--respawn",
 				"--no-notify",
