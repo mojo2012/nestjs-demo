@@ -1,7 +1,7 @@
 import { ResponseEntity } from "@app/dtos"
 import { User } from "@app/entities/User"
 import { UserService } from "@app/services"
-import { Body, Controller, Get, Post } from "@nestjs/common"
+import { Body, Controller, Get, HttpStatus, Post } from "@nestjs/common"
 
 @Controller()
 export class AppController {
@@ -20,6 +20,7 @@ export class AppController {
 	public async createUser(@Body() body: User): Promise<ResponseEntity<User>> {
 		const user = await this.userService.createUser(body)
 		return ResponseEntity.of({
+			status: HttpStatus.CREATED,
 			body: user
 		})
 	}

@@ -16,6 +16,14 @@ async function bootstrap() {
 	const logger = new Logger("Bootstrap")
 
 	logger.log(`Listening on port ${port}`)
+
+	// installs an 'unhandledRejection' handler
+	// eslint-disable-next-line @typescript-eslint/no-var-requires
+	const makePromisesSafe = require("make-promises-safe")
+	// installs an 'unhandledRejection' handler
+	makePromisesSafe.logError = function(err: Error) {
+		logger.error(err.message)
+	}
 }
 
 bootstrap()
