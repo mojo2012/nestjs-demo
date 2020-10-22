@@ -1,24 +1,26 @@
 import { ResponseEntity } from "@app/dtos"
+import { AbstractBaseEntity } from "@app/entities"
 import { User } from "@app/entities/User"
-import { UserService } from "@app/services"
-import { Body, Controller, Get, HttpStatus, Post } from "@nestjs/common"
+import { EntityService } from "@app/services"
+import { EntityName } from "@mikro-orm/core"
+import { Body, Controller, Get, HttpStatus, Param, Post } from "@nestjs/common"
 
 @Controller()
-export class AppController {
-	public constructor(private readonly userService: UserService) {}
+export class EntityController {
+	public constructor(private readonly entityService: EntityService) {}
 
-	@Get("/users")
-	public async listAllUsers(): Promise<ResponseEntity<Array<User>>> {
-		const users = await this.userService.getUsers()
+	@Get("/:entityType")
+	public async getAll(@Param() params: { entityType: EntityName<AbstractBaseEntity> }): Promise<ResponseEntity<Array<AbstractBaseEntity>>> {
+		const entities = await this.entityService.get(params.entityType)
 
 		return ResponseEntity.of({
-			body: users
+			body: entities
 		})
 	}
 
-	@Post("/users")
-	public async createUser(@Body() body: User): Promise<ResponseEntity<User>> {
-		const user = await this.userService.createUser(body)
+	@Post("/:entityType")
+	public async createUser(@Param() params: { entityType: EntityName<AbstractBaseEntity> }, @Body() body: User): Promise<ResponseEntity<AbstractBaseEntity>> {
+		const user = await this.entityService.create(params.entityType, body)
 		return ResponseEntity.of({
 			status: HttpStatus.CREATED,
 			body: user

@@ -1,4 +1,4 @@
-import { AppController } from "@app/endpoints"
+import { EntityController } from "@app/endpoints"
 import { AbstractUniqueIdentifierEntity } from "@app/entities"
 import { AbstractBaseEntity } from "@app/entities/AbstractBaseEntity"
 import { User } from "@app/entities/User"
@@ -6,7 +6,7 @@ import { ExceptionFilter } from "@app/filters/ExceptionFilter"
 import { LoggingInterceptor, ResponseEntityInterceptor } from "@app/interceptors"
 import { UserGroupRepository } from "@app/repositories"
 import { UserRepository } from "@app/repositories/UserRepository"
-import { UserService } from "@app/services"
+import { EntityService } from "@app/services"
 import { MikroORM } from "@mikro-orm/core"
 import { MikroOrmModule } from "@mikro-orm/nestjs"
 import { Module } from "@nestjs/common"
@@ -27,9 +27,9 @@ import { UserGroup } from "../entities/UserGroup"
 			autoLoadEntities: true
 		})
 	],
-	controllers: [AppController],
+	controllers: [EntityController],
 	providers: [
-		UserService,
+		EntityService,
 		UserRepository,
 		UserGroupRepository,
 		{
