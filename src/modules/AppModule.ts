@@ -9,7 +9,7 @@ import { UserRepository } from "@app/repositories/UserRepository"
 import { EntityService } from "@app/services"
 import { MikroORM } from "@mikro-orm/core"
 import { MikroOrmModule } from "@mikro-orm/nestjs"
-import { Module } from "@nestjs/common"
+import { MiddlewareConsumer, Module, NestModule } from "@nestjs/common"
 import { APP_FILTER, APP_INTERCEPTOR } from "@nestjs/core"
 import { UserGroup } from "../entities/UserGroup"
 
@@ -51,8 +51,14 @@ import { UserGroup } from "../entities/UserGroup"
 	],
 	exports: [MikroOrmModule]
 })
-export class AppModule {
+export class AppModule implements NestModule {
 	public constructor(private readonly orm: MikroORM) {}
+
+	public configure(consumer: MiddlewareConsumer): void {
+		// consumer //
+		// 	.apply(EntityManagerMiddleware)
+		// 	.forRoutes("*")
+	}
 
 	public async onModuleInit(): Promise<void> {
 		const commandLineArgs = process.argv.slice(2)

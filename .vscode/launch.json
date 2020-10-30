@@ -24,10 +24,10 @@
 				"tsconfig-paths/register",
 				"--transpile-only",
 				// "--debug",
-				"--quiet",
 				"--clear",
 				"./src/main.ts",
 				// app arguments
+				"--quiet",
 				"--init"
 			],
 			"skipFiles": [

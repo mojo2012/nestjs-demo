@@ -9,7 +9,7 @@ export class EntityService {
 	}
 
 	public async get<E extends AbstractBaseEntity>(entityType: EntityName<E>): Promise<Array<E>> {
-		this.entityManager.getRepository(User).find(where)
+		this.entityManager.getRepository(User).findAll()
 
 		const entities = await this.entityManager.find(entityType, {}, { populate: true })
 
