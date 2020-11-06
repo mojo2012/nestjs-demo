@@ -5,12 +5,12 @@ import { UUID } from "@app/types"
 import { EntityName } from "@mikro-orm/core"
 import { Body, Controller, Get, HttpStatus, Param, Post, Put } from "@nestjs/common"
 
-@Controller()
+@Controller("/entities")
 export class EntityController {
 	public constructor(private readonly entityService: EntityService) {}
 
 	@Get("/:entityType")
-	public async getAll(@Param() params: { entityType: EntityName<AbstractBaseEntity> }): Promise<ResponseEntity<Array<AbstractBaseEntity>>> {
+	public async findAll(@Param() params: { entityType: EntityName<AbstractBaseEntity> }): Promise<ResponseEntity<Array<AbstractBaseEntity>>> {
 		const entities = await this.entityService.findAll(params.entityType)
 
 		return ResponseEntity.of({

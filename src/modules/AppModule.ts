@@ -1,8 +1,8 @@
-import ormConfig from "@app/config/orm.config"
+import nestConfig from "@app/config/nest.config"
 import { MikroORM } from "@mikro-orm/core"
 import { MiddlewareConsumer, Module, NestModule } from "@nestjs/common"
 
-@Module(ormConfig)
+@Module(nestConfig)
 export class AppModule implements NestModule {
 	public constructor(private readonly orm: MikroORM) {}
 

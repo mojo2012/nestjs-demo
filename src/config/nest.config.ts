@@ -1,4 +1,4 @@
-import { EntityController } from "@app/endpoints"
+import { EntityController, TypesController } from "@app/endpoints"
 import { AbstractBaseEntity, AbstractUniqueIdentifierEntity, User, UserGroup } from "@app/entities"
 import { ExceptionFilter } from "@app/filters/ExceptionFilter"
 import { LoggingInterceptor, ResponseEntityInterceptor } from "@app/interceptors"
@@ -23,7 +23,7 @@ export default {
 			// highlighter: new SqlHighlighter(),
 		})
 	],
-	controllers: [EntityController],
+	controllers: [EntityController, TypesController],
 	providers: [
 		EntityService,
 		UserRepository,
