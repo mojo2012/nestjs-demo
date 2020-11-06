@@ -1,9 +1,10 @@
+import { UUID } from "@app/types"
 import { BaseEntity, PrimaryKey, Property } from "@mikro-orm/core"
-import { v4 } from "uuid"
+import { v4 as createUUID } from "uuid"
 
 export abstract class AbstractBaseEntity extends BaseEntity<AbstractBaseEntity, "id"> {
 	@PrimaryKey({ columnType: "uuid" })
-	public id = v4()
+	public id: UUID = createUUID()
 
 	@Property({ version: true, columnType: "integer" })
 	public version = 0

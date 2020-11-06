@@ -60,4 +60,7 @@ export class HttpResponse {
 	}
 }
 
+export { v4 as uuid } from "uuid"
 export * from "./FreezableObject"
+
+export type UUID = string
