@@ -9,16 +9,44 @@ export class TypesController {
 
 	@Get("/")
 	public async findAll(): Promise<ResponseEntity<Array<Record<string, unknown>>>> {
-		const entityTypes = this.getEntityTypes()
+		const emMetadata: any = this.orm.em.getMetadata()
+		const entityMetadata: Record<string, any> = emMetadata.metadata
+
+		const entityTypes = Object.getOwnPropertyNames(entityMetadata).map((t) => {
+			const typeInfo: any = entityMetadata[t]
+
+			return {
+				className: t,
+				superClass: typeInfo.extends,
+				isAbstract: typeInfo.abstract,
+				class: typeInfo.class,
+				primaryKey: typeInfo.primaryKeys,
+				properties: this.convertTypeProperties(typeInfo.properties)
+			}
+		})
 
 		return ResponseEntity.of({
 			body: entityTypes
 		})
 	}
 
+	private convertTypeProperties(properties: any): Array<Record<string, unknown>> {
+		const propertiesNames = Object.keys(properties)
+
+		return propertiesNames.map((prop) => {
+			const propValue: any = properties[prop]
+
+			return {
+				name: prop,
+				type: propValue.type
+			}
+		})
+	}
+
 	@Get("/:entityType")
 	public async findOne(@Param() params: { entityType: EntityName<AbstractBaseEntity> }): Promise<ResponseEntity<Record<string, unknown>>> {
-		const entityTypes = this.getEntityTypes().filter((t) => typeof params.entityType)
+		const entityTypes = this.getEntityTypes() //
+			.filter((t) => typeof params.entityType)
 
 		return ResponseEntity.of({
 			body: {}
