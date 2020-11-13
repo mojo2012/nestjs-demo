@@ -16,6 +16,8 @@
 			"outputCapture": "std",
 			"internalConsoleOptions": "openOnSessionStart",
 			"args": [
+				"--experimental-specifier-resolution=node",
+				"--experimental-modules",
 				"--trace-warnings",
 				"--inspect",
 				"--respawn",
@@ -25,6 +27,7 @@
 				"--transpile-only",
 				// "--debug",
 				"--clear",
+				"--", // entrypoint
 				"./src/main.ts",
 				// app arguments
 				"--quiet",
@@ -32,6 +35,40 @@
 			],
 			"skipFiles": [
 				"<node_internals>/**"
+			],
+			"sourceMaps": true,
+			"smartStep": true,
+			"resolveSourceMapLocations": [
+				"${workspaceFolder}/**",
+				"!**/node_modules/**"
+			]
+		},
+		{
+			"name": "Debug (node-ts)",
+			"type": "pwa-node",
+			"request": "launch",
+			"runtimeExecutable": "node",
+			"runtimeArgs": [
+				"--experimental-specifier-resolution=node",
+				"--experimental-modules",
+				"--loader",
+				"ts-node/esm",
+				// "--nolazy",
+				// "-r",
+				// "ts-node/register/transpile-only"
+			],
+			"args": [
+				"--",
+				"src/main.ts",
+				"--init",
+			],
+			"cwd": "${workspaceRoot}",
+			"console": "internalConsole",
+			"outputCapture": "std",
+			"internalConsoleOptions": "openOnSessionStart",
+			"skipFiles": [
+				"<node_internals>/**",
+				"node_modules/**"
 			],
 			"sourceMaps": true,
 			"smartStep": true,

@@ -1,0 +1,6 @@
+{
+	"dbType": "mongo",
+	"user": "admin",
+	"password": "change123",
+	"ensureIndexes": true
+}

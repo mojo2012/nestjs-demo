@@ -23,7 +23,8 @@ export class EntityController {
 		const entity = await this.entityService.findOne(params.entityType, { id: params.id })
 
 		return ResponseEntity.of({
-			body: entity
+			body: entity,
+			status: entity ? HttpStatus.OK : HttpStatus.NOT_FOUND
 		})
 	}
 

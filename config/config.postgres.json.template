@@ -1,0 +1,6 @@
+{
+	"dbType": "postgres",
+	"user": "admin",
+	"password": "change123",
+	"clientUrl": "jdbc:postgresql://localhost:5432/"
+}

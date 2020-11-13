@@ -4,6 +4,7 @@ import { ExceptionFilter } from "@app/filters/ExceptionFilter"
 import { LoggingInterceptor, ResponseEntityInterceptor } from "@app/interceptors"
 import { UserGroupRepository, UserRepository } from "@app/repositories"
 import { EntityService } from "@app/services"
+import Config from "@config/config.json"
 import { logger, MikroOrmModule } from "@mikro-orm/nestjs"
 import { APP_FILTER, APP_INTERCEPTOR } from "@nestjs/core"
 
@@ -12,14 +13,16 @@ export default {
 		MikroOrmModule.forRoot({
 			entities: [AbstractBaseEntity, AbstractUniqueIdentifierEntity, UserGroup, User],
 			dbName: "nest",
+			// type: "postgresql",
+			clientUrl: Config.clientUrl,
 			type: "postgresql",
-			clientUrl: "jdbc:postgresql://localhost:5432/",
 			baseDir: __dirname,
 			strict: true,
-			user: "admin",
-			password: "change123",
+			user: Config.user,
+			password: Config.password,
 			autoLoadEntities: true,
-			logger: logger.log.bind(logger)
+			logger: logger.log.bind(logger),
+			ensureIndexes: Config.ensureIndexes
 			// highlighter: new SqlHighlighter(),
 		})
 	],

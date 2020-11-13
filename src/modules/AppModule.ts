@@ -1,4 +1,5 @@
 import nestConfig from "@app/config/nest.config"
+import { BOOTSTRAP_LOGGER } from "@app/main"
 import { MikroORM } from "@mikro-orm/core"
 import { MiddlewareConsumer, Module, NestModule } from "@nestjs/common"
 
@@ -16,11 +17,15 @@ export class AppModule implements NestModule {
 		const commandLineArgs = process.argv.slice(2)
 
 		if (commandLineArgs.includes("--init")) {
-			const generator = this.orm.getSchemaGenerator()
+			try {
+				const generator = this.orm.getSchemaGenerator()
 
-			await generator.dropSchema()
-			await generator.createSchema()
-			await generator.updateSchema()
+				await generator.dropSchema()
+				await generator.createSchema()
+				await generator.updateSchema()
+			} catch (error) {
+				BOOTSTRAP_LOGGER.warn("Schema generator not available!")
+			}
 		}
 	}
 }
