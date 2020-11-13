@@ -1,9 +1,9 @@
-import nestConfig from "@app/config/nest.config"
+import NestConfig from "@app/config/NestConfig"
 import { BOOTSTRAP_LOGGER } from "@app/main"
 import { MikroORM } from "@mikro-orm/core"
 import { MiddlewareConsumer, Module, NestModule } from "@nestjs/common"
 
-@Module(nestConfig)
+@Module(NestConfig)
 export class AppModule implements NestModule {
 	public constructor(private readonly orm: MikroORM) {}
 
