@@ -1,5 +1,9 @@
 {
 	"compileOnSave": true,
+	"ts-node": {
+		"transpileOnly": true,
+		"typeCheck": true
+	},
 	"compilerOptions": {
 		"resolveJsonModule": true,
 		"allowJs": true,

@@ -2,10 +2,14 @@
 	"extends": "./tsconfig.base.json",
 	"exclude": [],
 	"compilerOptions": {
+		"outDir": "./dist-tests",
 		"paths": {
 			"@test/*": [
 				"test/*"
 			]
 		},
-	}
+	},
+	"include": [
+		"test"
+	]
 }
