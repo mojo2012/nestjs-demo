@@ -1,0 +1,65 @@
+{
+	"compileOnSave": true,
+	"compilerOptions": {
+		"resolveJsonModule": true,
+		"allowJs": true,
+		"allowSyntheticDefaultImports": true,
+		"alwaysStrict": true,
+		"declaration": true,
+		"declarationMap": true,
+		"composite": true,
+		"pretty": true,
+		"skipLibCheck": true,
+		"emitDecoratorMetadata": true,
+		"emitBOM": true,
+		"experimentalDecorators": true,
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"incremental": true,
+		"module": "CommonJS",
+		"moduleResolution": "node",
+		"noImplicitAny": true,
+		"noImplicitReturns": true,
+		"noImplicitThis": true,
+		"noUnusedLocals": false,
+		"noUnusedParameters": false,
+		"outDir": "./dist",
+		"isolatedModules": true,
+		"target": "ESNext",
+		"lib": [
+			"ESNext"
+		],
+		"baseUrl": ".",
+		"paths": {
+			"@app/*": [
+				"src/*"
+			],
+			"@config/*": [
+				"config/*"
+			]
+		},
+		"useDefineForClassFields": true,
+		"importsNotUsedAsValues": "error",
+		"removeComments": false,
+		"sourceMap": true,
+		"strict": true,
+		"strictBindCallApply": true,
+		"strictFunctionTypes": true,
+		"strictNullChecks": true,
+		"strictPropertyInitialization": true,
+		"skipDefaultLibCheck": true,
+		// "types": []
+	},
+	"include": [
+		"src"
+	],
+	"exclude": [
+		"**/node_modules",
+		"**/bower_components",
+		"**/jspm_packages",
+		"**/tmp",
+		"**/temp",
+		"**/dist",
+		"**/.*"
+	]
+}
