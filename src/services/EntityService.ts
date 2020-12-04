@@ -1,5 +1,5 @@
-import { AbstractBaseEntity } from "@app/entities"
-import { UUID } from "@app/types"
+import type { AbstractBaseEntity } from "@app/entities"
+import type { UUID } from "@app/types"
 import { EntityData, EntityManager, EntityName, FilterQuery } from "@mikro-orm/core"
 import { Injectable } from "@nestjs/common"
 

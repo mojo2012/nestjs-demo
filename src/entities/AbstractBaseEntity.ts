@@ -1,4 +1,4 @@
-import { UUID } from "@app/types"
+import type { UUID } from "@app/types"
 import { BaseEntity, PrimaryKey, Property, SerializedPrimaryKey } from "@mikro-orm/core"
 import { v4 as createUUID } from "uuid"
 

@@ -41,7 +41,8 @@
 			"resolveSourceMapLocations": [
 				"${workspaceFolder}/**",
 				"!**/node_modules/**"
-			]
+			],
+			"showAsyncStacks": true
 		},
 		{
 			"name": "Debug (node-ts)",

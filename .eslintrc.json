@@ -25,6 +25,8 @@
 				"*.json"
 			],
 			"rules": {
+				"class-methods-use-this": "error",
+				"lines-between-class-members": "warn",
 				"prettier/prettier": [
 					"warn",
 					{

@@ -1,8 +1,8 @@
 import { ResponseEntity } from "@app/dtos"
 import { AbstractBaseEntity } from "@app/entities"
 import { EntityService } from "@app/services"
-import { UUID } from "@app/types"
-import { EntityName } from "@mikro-orm/core"
+import type { UUID } from "@app/types"
+import type { EntityName } from "@mikro-orm/core"
 import { Body, Controller, Get, HttpStatus, Param, Post, Put } from "@nestjs/common"
 
 @Controller("/entities")
