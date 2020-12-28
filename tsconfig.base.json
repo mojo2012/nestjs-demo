@@ -55,7 +55,8 @@
 		// "types": []
 	},
 	"include": [
-		"src/**/*"
+		"src/**/*",
+		"config/**/*.json"
 	],
 	"exclude": [
 		"**/node_modules",
